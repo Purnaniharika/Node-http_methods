@@ -37,6 +37,10 @@ app.get("/users",(req,res)=>{
     res.send(html);
  })
 app.get("/api/users",(req,res)=>{
+    console.log(req.headers);//This is request headers 
+    
+    res.setHeader('X-myName','Niharika');//This is a Custom response headers 
+    //Always add X to custom headers
     return res.json(users);
 })
 // app.get("/api/users/:id",(req,res)=>{
