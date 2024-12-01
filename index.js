@@ -6,7 +6,27 @@ const port = 8000;
 app.use(express.json());
 
 //Middleware - Plugin
-app.use(express.urlencoded({extended:false}))
+//The below one is a third party middleware ...prebuilt middleware
+app.use(express.urlencoded({extended:false}))//this middleware process the data coming from the body and converts to an object and returns it to the req.body
+app.use((req,res,next)=>{
+    fs.appendFile("log.txt",`\n ${Date.now()}:${req.ip} : ${req.method}:${req.path}`,(err,data)=>{
+        next();
+    })
+   console.log("This is middleware 1")
+   req.myUserName ='Niharika'
+//    return  res.end("this is middleware 1")
+
+})
+
+app.use((req,res,next)=>{
+ 
+    console.log("Hello form middleware 2 "+req.myUserName);
+   next()
+    
+})
+
+
+
 //Routes
 app.get("/users",(req,res)=>{
     const html = `
