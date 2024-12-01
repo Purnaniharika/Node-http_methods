@@ -53,6 +53,7 @@ app.route("/api/users/:id")
 .get((req,res)=>{
     const id =Number( req.params.id);
     const user = users.find((users) =>users.id ===id )
+    if(!user) return res.status(404).json({msg : "User doesnt exist"})
     // return res.json(user.first_name)
     return res.json(user)
 })
@@ -103,7 +104,10 @@ app.route("/api/users/:id")
     users.push({...body, id:users.length+1})
     fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
   
-        res.json({ status:"success",id : users.length});
+        if(!body || !body.first_name || !body.last_name || !body.email || !body.last_name){
+            return res.status(400).json({ msg :"All fields are required"})
+        } 
+        return res.status(201).json({ status:"success",id : users.length});
     })
     console.log(body);
   

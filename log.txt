@@ -9,3 +9,10 @@
  1733041371262:::1 : GET:/api/users
  1733041407327:::1 : GET:/api/users
  1733041547918:::1 : GET:/api/users
+ 1733052423813:::1 : POST:/api/users
+ 1733052665101:::1 : POST:/api/users
+ 1733052931285:::1 : POST:/api/users/6546
+ 1733052976764:::1 : POST:/api/users/6546
+ 1733053001593:::1 : POST:/api/users/6546
+ 1733053036555:::1 : POST:/api/users/6546
+ 1733053179168:::1 : GET:/api/users/6546
